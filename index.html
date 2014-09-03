@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<title>Silly</title>
+<!--	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+	<script src="./js/zepto.min.js"></script>
+	<script src="./js/silly.js"></script>
+</head>
+<body>
+	<button id="GO">GO</button>
+	<button id="clear">Clear </button>
+	<div id="results"></div>
+
+
+		
+  
+  <script type="text/javascript">
+
+        $("#But").click(function () {
+            alert("Hello!");
+            $(".hide_div").hide();
+
+        });
+        $("#GO").click(function () {
+            $("#results").append(Date() + '<br/>');
+			
+
+        });
+        $("#clear").click(function () {
+            $("#results").html('');
+
+        });
+
+
+</script>
+
+<script type="text/javascript">
+
+</script>	
+
+</body>
+</html>
