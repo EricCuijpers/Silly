@@ -41,7 +41,7 @@
 		}
 		function successQueryDB(tx){ 
 			alert("Query done!!");
-			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
+			tx.executeSql('SELECT * FROM DEMO', [], renderList, errorDB);
 			alert("RENDERLIST na");
 		}
 		function renderList(tx, results){
