@@ -34,7 +34,7 @@
 			alert("CREATE na");
 		}
 		function errorDB(errCode){ 
-			alert("SQL Error: " +  errCode);
+			alert("SQL Error Query: " +  errCode);
 		}
 		function successDB(){ 
 			alert("DONE!!");
@@ -42,7 +42,7 @@
 		function successQueryDB(tx){ 
 			alert("Query done!!");
 			var sql = "SELECT * FROM DEMO";
-			tx.executeSql(sql, [], renderList, erroDB);
+			tx.executeSql(sql, [], renderList, errorDB);
 		}
 		function renderList(tx, results){
 			var htmlstring = "";
@@ -80,7 +80,8 @@
 			var adescr = document.getElementById("adescr").value;
 			
 			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES (?,?,?)";
-			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
+			tx.executeSql(sql, ["KOE", "Berta", "", ""], succesQueryDB, erroDB);
+//			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
 			
 		};
 		
