@@ -34,14 +34,19 @@
 //			alert("CREATE na");
 		}
 		function querySuccess(tx, results){
-			alert("RENDERLIST results");
+			alert("Result" + results);
 			var htmlstring = "";
+			alert (htmlstring);
+			
 			var len = results.rows.length;
+			alert(len);
 			for (var i=0;i<len;i++) {
+				alert(i);
 				htmlstring += "<li>" + results.rows.item[i].soort + " : ";
 				htmlstring += results.rows.item[i].naam + "<li/>";
 			}
 			
+			alert("combineer");
 			$('#ul2').html(htmlstring);
 			$('#ul2').listview('refresh');
 			
