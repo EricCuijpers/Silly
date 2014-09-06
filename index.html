@@ -84,11 +84,13 @@
 			
 			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ('Koe','Berta','','')";
 			alert (sql);
-			tx.executeSql('INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ("Koe","Berta","","")',[],succesQueryDB, errorDB );
+			tx.executeSql('INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ("Koe","Berta","","")');
 //			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
 
 			alert("INSERT na");
-			successQueryDB();
+			alert("Query done!!");
+			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
+			alert("RENDERLIST na");
 			
 			
 		};
