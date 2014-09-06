@@ -2,17 +2,157 @@
 <html>
 <head>
 	<title>Silly</title>
-<!--	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> -->
-	<script src="./js/zepto.min.js"></script>
+	<script src="./js/jquery-1.11.1.js"></script>
+	<script src="phonegap.js"></script>
+	<script src="./js/jquery.mobile-1.4.3.min.js"></script>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.3.min.css">
 	<script src="./js/silly.js"></script>
+	
+<script type="text/javascript">
+		$(document).ready(function() {
+			$('#locstor').click(function() {
+				$.mobile.changePage("#page2", {reverse: false, transmition: "slide"});
+			});
+			$('#dbstor').click(function() {
+				$.mobile.changePage("#page4", {reverse: false, transmition: "slide"});
+			});
+		});
+		 
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+		var db;
+		function onDeviceReady() {
+			alert("READY");
+			db = window.openDatabase("database", "1.0", "Cordova sample", 2*1024*1024);
+			db.transaction(createDB, errorDB, successDB);
+		};
+		function createDB(tx){
+			//tx.executeSql('DROP TABLE IF EXISTS DEMO');
+			tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, soort, name, image, omschrijving)');
+		}
+		function createDB(errCode){ 
+			alert("SQL Error: " +  errCode);
+		}
+		function successDB(){ 
+			alert("DONE!!");
+		}
+		function successQueryDB(tx){ 
+			alert("Query done!!");
+			var sql = "SELECT * FROM DEMO";
+			tx.executeSql(sql, [], renderList, erroDB);
+		}
+		function renderList(tx, results){
+			var htmlstring = "";
+			var len = results.rows.length;
+			for (var i=0;i<len;i++) {
+				htmlstring += "<li>" + results.rows.item[i].soort + " : ";
+				htmlstring += results.rows.item[i].naam + "<li/>";
+			}
+			
+			$('#ul2').html(htmlstring);
+			$('#ul2').listview('refresh');
+			
+			$.mobile.changePage("#page5", {reverse: false, transmition: "slide"});
+			
+		}
+		function submitForm() {
+			var uname = document.getElementById("username").value;
+			var umail = document.getElementById("usermail").value;
+		
+			window.localStorage.setItem('username', uname);
+			window.localStorage.setItem('usermail', umail);
+			
+			$.mobile.changePage("#page3", {reverse: false, transmition: "slide"});
+			var omail = window.localStorage['username'];
+			$("#output").html("USERNAME " + window.localStorage['username'] + "<br/>"
+							+ "USERMAIL " + window.localStorage['usermail'] + "<br/>"
+			);  
+			return false;
+		}
+		function InsertDB(tx){
+			alert("F2");
+		var animal = document.getElementById("animal").value;
+			var aname = document.getElementById("aname").value;
+			var aimage = document.getElementById("aimage").value;
+			var adescr = document.getElementById("adescr").value;
+			
+			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES (?,?,?)";
+			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
+			
+		};
+		
+		function submitForm2() {
+			db.transaction(InsertDB, errorDB);
+			return false;
+		}
+	</script>	
+	
 </head>
 <body>
-	<button id="GO">GO</button>
-	<button id="clear">Clear </button>
-	<div id="results"></div>
+	<div data-role="page" id="page1">
 
+		<button id="locstor">LocalStorage Voorbeeld</button>
+
+		<button id="dbstor">database Storage Voorbeeld</button>
 
 		
+	</div>
+
+	<div data-role="page" id="page2">
+		<div data-role="header" data-add-back-btn="true">
+			<h1>FORMULIER</h1>
+		</div>
+		<div data-role="content">
+			<form method="POST" onsubmit="return submitForm()" data-ajax="false">
+				<input id="username" name="username" type=text placeholder="Username"/>
+				<input id="usermail" name="email" type=text placeholder="Email"/>
+				<button id="but1">Add</button>
+			</form>
+		
+		</div>
+	</div>
+	<div data-role="page" id="page3" >
+		<div data-role="header" data-add-back-btn="true">
+			<h1>Result LocalStorage</h1>
+		</div>
+		<div data-role="content">
+			<div id="output">
+			
+			</div>
+		</div>
+	</div>	
+  
+  <div data-role="page" id="page4">
+		<div data-role="header" data-add-back-btn="true">
+			<h1>FORMULIER 2</h1>
+		</div>
+		<div data-role="content">
+			<form method="POST" onsubmit="return submitForm2()" data-ajax="false">
+				<input id="animal" 	name="animal" type=text placeholder="Animal"/>
+				<input id="aname" 	name="aname" type=text placeholder="Name"/>
+				<input id="aimage" 	name="aimage" type=text placeholder="Image"/>
+				<textarea id="adescr" 	name="adescr"  placeholder="Omschrijving"></textarea>
+				<button id="but2">Add</button>
+			</form>
+		
+		</div>
+	</div>
+	<div data-role="page" id="page5" >
+		<div data-role="header" data-add-back-btn="true">
+			<h1>Result Database storage</h1>
+		</div>
+		<div data-role="content">
+			<div id="output2">
+			
+			</div>
+			
+			<ul id="ul2">
+			
+			</ul>
+		</div>
+	</div>	
+  
+  
   
   <script type="text/javascript">
 
@@ -22,6 +162,7 @@
 
         });
         $("#GO").click(function () {
+		
             $("#results").append(Date() + '<br/>');
 			
 
