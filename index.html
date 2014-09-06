@@ -29,10 +29,11 @@
 		};
 		function createDB(tx){
 			//tx.executeSql('DROP TABLE IF EXISTS DEMO');
-			alert("CREATE");
+			alert("CREATE voor");
 			tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, soort, name, image, omschrijving)');
+			alert("CREATE na");
 		}
-		function createDB(errCode){ 
+		function errorDB(errCode){ 
 			alert("SQL Error: " +  errCode);
 		}
 		function successDB(){ 
