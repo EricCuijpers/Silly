@@ -42,9 +42,10 @@
 		function successQueryDB(tx){ 
 			alert("Query done!!");
 			var sql = "SELECT * FROM DEMO";
-			tx.executeSql(sql, [], renderList, errorDB);
+			tx.executeSql(sql, [], renderList, errorrDB);
 		}
 		function renderList(tx, results){
+			alert("RENDERLIST");
 			var htmlstring = "";
 			var len = results.rows.length;
 			for (var i=0;i<len;i++) {
