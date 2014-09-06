@@ -79,7 +79,7 @@
 			var aimage = document.getElementById("aimage").value;
 			var adescr = document.getElementById("adescr").value;
 			
-			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES (?,?,?,?)";
+			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ('Koe','Berta','','')";
 			tx.executeSql(sql, ["KOE", "Berta", "", ""], succesQueryDB, erroDB);
 //			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
 			alert("INSERT na");
