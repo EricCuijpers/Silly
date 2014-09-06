@@ -33,17 +33,6 @@
 			tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, soort, name, image, omschrijving)');
 //			alert("CREATE na");
 		}
-		function errorDB(errCode){ 
-			alert("SQL Error Query: " +  errCode);
-		}
-		function successDB(){ 
-			alert("DONE!!");
-		}
-		function successQueryDB(tx){ 
-			alert("Query done!!");
-			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
-			alert("RENDERLIST na");
-		}
 		function querySuccess(tx, results){
 			alert("RENDERLIST results");
 			var htmlstring = "";
@@ -59,6 +48,19 @@
 			$.mobile.changePage("#page5", {reverse: false, transmition: "slide"});
 			
 		}
+		function errorDB(errCode){ 
+			alert("SQL Error Query: " +  errCode);
+		}
+		
+		function successDB(){ 
+			alert("DONE!!");
+		}
+		function successQueryDB(tx){ 
+			alert("Query done!!");
+			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
+			alert("RENDERLIST na");
+		}
+		
 		function submitForm() {
 			var uname = document.getElementById("username").value;
 			var umail = document.getElementById("usermail").value;
