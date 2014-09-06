@@ -80,7 +80,8 @@
 			var adescr = document.getElementById("adescr").value;
 			
 			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ('Koe','Berta','','')";
-			tx.executeSql(sql, ["KOE", "Berta", "", ""], succesQueryDB, erroDB);
+			alert (sql);
+			tx.executeSql(sql, [], succesQueryDB, errorDB);
 //			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
 			alert("INSERT na");
 			
