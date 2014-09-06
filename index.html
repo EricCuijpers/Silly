@@ -41,11 +41,11 @@
 		}
 		function successQueryDB(tx){ 
 			alert("Query done!!");
-			var sql = "SELECT * FROM DEMO";
-			tx.executeSql(sql, [], renderList, errorrDB);
+			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
+			alert("RENDERLIST na");
 		}
 		function renderList(tx, results){
-			alert("RENDERLIST");
+			alert("RENDERLIST results");
 			var htmlstring = "";
 			var len = results.rows.length;
 			for (var i=0;i<len;i++) {
