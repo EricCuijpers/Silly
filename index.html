@@ -73,15 +73,16 @@
 			return false;
 		}
 		function InsertDB(tx){
-			alert("F2");
+			alert("INSERT voor");
 		var animal = document.getElementById("animal").value;
 			var aname = document.getElementById("aname").value;
 			var aimage = document.getElementById("aimage").value;
 			var adescr = document.getElementById("adescr").value;
 			
-			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES (?,?,?)";
+			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES (?,?,?,?)";
 			tx.executeSql(sql, ["KOE", "Berta", "", ""], succesQueryDB, erroDB);
 //			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
+			alert("INSERT na");
 			
 		};
 		
