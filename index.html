@@ -22,16 +22,16 @@
 		
 		var db;
 		function onDeviceReady() {
-			alert("READY");
+//			alert("READY");
 			db = window.openDatabase("database", "1.0", "Cordova sample", 2*1024*1024);
-			alert(db);
+//			alert(db);
 			db.transaction(createDB, errorDB, successDB);
 		};
 		function createDB(tx){
 			//tx.executeSql('DROP TABLE IF EXISTS DEMO');
-			alert("CREATE voor");
+//			alert("CREATE voor");
 			tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, soort, name, image, omschrijving)');
-			alert("CREATE na");
+//			alert("CREATE na");
 		}
 		function errorDB(errCode){ 
 			alert("SQL Error Query: " +  errCode);
@@ -41,10 +41,10 @@
 		}
 		function successQueryDB(tx){ 
 			alert("Query done!!");
-			tx.executeSql('SELECT * FROM DEMO', [], renderList, errorDB);
+			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
 			alert("RENDERLIST na");
 		}
-		function renderList(tx, results){
+		function querySuccess(tx, results){
 			alert("RENDERLIST results");
 			var htmlstring = "";
 			var len = results.rows.length;
