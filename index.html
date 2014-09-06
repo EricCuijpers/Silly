@@ -24,10 +24,12 @@
 		function onDeviceReady() {
 			alert("READY");
 			db = window.openDatabase("database", "1.0", "Cordova sample", 2*1024*1024);
+			alert("OPEN");
 			db.transaction(createDB, errorDB, successDB);
 		};
 		function createDB(tx){
 			//tx.executeSql('DROP TABLE IF EXISTS DEMO');
+			alert("CREATE");
 			tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, soort, name, image, omschrijving)');
 		}
 		function createDB(errCode){ 
