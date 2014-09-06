@@ -24,7 +24,7 @@
 		function onDeviceReady() {
 			alert("READY");
 			db = window.openDatabase("database", "1.0", "Cordova sample", 2*1024*1024);
-			alert("OPEN");
+			alert(db);
 			db.transaction(createDB, errorDB, successDB);
 		};
 		function createDB(tx){
