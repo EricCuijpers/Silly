@@ -114,7 +114,9 @@
 			});
 			$('#but2clear').click(function() {
 				alert("BUR2Clear");
-				db.transaction(DeleteDB, errorDB);
+				alert("DEL");
+			tx.executeSql('DELETE * FROM DEMO');
+			alert("DEL na");
 				alert("RELOAD");
 				window.location.href=window.location.href;
 			});
