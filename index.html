@@ -61,6 +61,11 @@
 			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
 //			alert("RENDERLIST na");
 		}
+		function successDELDB(){ 
+			alert("DEL DONE!!");
+			$.mobile.changePage("#page4", {reverse: false, transmition: "slide"});
+			
+		}
 		
 		function submitForm() {
 			var uname = document.getElementById("username").value;
@@ -93,11 +98,15 @@
 			
 			
 		};
-		function DeleteDB(tx){
+		
+		function DeleteDB(){
 			alert("DEL");
-			tx.executeSql('DELETE * FROM DEMO');
+			db.transaction(function(tx) {
+			        tx.executeSql('DELETE FROM DEMO', [], successDELDB, errorDB); 
+			    });
+			}
 			alert("DEL na");
-			return true;
+			return;
 		}
 		
 		function submitForm2() {
@@ -114,8 +123,8 @@
 			});
 			$('#but2clear').click(function() {
 				alert("BUR2Clear");
-				alert("DEL");
-			tx.executeSql('DELETE * FROM DEMO');
+				DeleteDB();
+
 			alert("DEL na");
 				alert("RELOAD");
 				window.location.href=window.location.href;
