@@ -29,7 +29,7 @@
 		function querySuccess(tx, results){
 			var htmlstring = "<br/>";
 			var len = results.rows.length;
-//			alert("LEN: " + len);
+			alert("LEN: " + len);
 			for (var i=0;i<len;i++) {
 //				alert(i);
 				htmlstring += "<li>"; 
@@ -53,7 +53,7 @@
 //			alert("DONE!!");
 		}
 		function successQueryDB(tx){ 
-//			alert("Query done!!");
+			alert("Query done!!");
 			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
 //			alert("RENDERLIST na");
 		}
@@ -95,9 +95,7 @@
 		};
 		
 		function ShowDB(){
-			alert("SHOW voor")
 			db.transaction(successQueryDB, errorDB);
-			alert("SHOW na");
 			
 		}
 		
@@ -126,7 +124,7 @@
 			});
 			$('#butShow').click(function() {
 				alert("BUTSHOW");
-				DeleteDB();
+				ShowDB();
 				window.location.href=window.location.href;
 			});
 		
