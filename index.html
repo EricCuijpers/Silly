@@ -127,9 +127,7 @@
 				ShowDB();
 				window.location.href=window.location.href;
 
-			$('.GoTo1').click(function() {
-				$.mobile.changePage("#page1", {reverse: false, transmition: "slide"});
-			});
+
 			$('#GoTo2').click(function() {
 				$.mobile.changePage("#page2", {reverse: false, transmition: "slide"});
 			});
@@ -139,6 +137,10 @@
 
 		
 		});
+		function GoTo1() {
+			
+				$.mobile.changePage("#page1", {reverse: false, transmition: "slide"});
+			}
 
 		function exitFromApp()
 	             {
@@ -170,7 +172,7 @@
 				<input id="usermail" name="email" type=text placeholder="Email"/>
 				<button id="but1">Add</button>
 			</form>
-			<button style="position:absolute;bottom:60px;" class="GoTo1" 	>HOME</button>
+			<button style="position:absolute;bottom:110px;" name="GoTo1" 	onclick="GoTo1()">HOME</button>
 			<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>		
 		</div>
 	</div>
@@ -182,7 +184,7 @@
 			<div id="output">
 			
 			</div>
-			<button style="position:absolute;bottom:110px;" class="GoTo1" 	>HOME</button>
+			<button style="position:absolute;bottom:110px;" name="GoTo1" 	onclick="GoTo1()">HOME</button>
 			<button style="position:absolute;bottom:60px;" id="GoTo2"  		>INSERT</button>
 			<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>	
 		</div>
@@ -202,7 +204,7 @@
 				<button id="but2">Add</button>
 			</form>
 			<button id="butShow">Show Current Content</button>
-			<button style="position:absolute;bottom:60px;" class="GoTo1" 	>HOME</button>
+			<button style="position:absolute;bottom:110px;" name="GoTo1" 	onclick="GoTo1()">HOME</button>
 			<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>
 		</div>
 	</div>
@@ -219,7 +221,7 @@
 			<ul id="ul2" data-role="listview">
 			
 			</ul>
-			<button style="position:absolute;bottom:110px;" class="GoTo1" 	>HOME</button>
+			<button style="position:absolute;bottom:110px;" name="GoTo1" 	onclick="GoTo1()">HOME</button>
 			<button style="position:absolute;bottom:60px;" id="GoTo4"  	>INSERT</button>
 			<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>
 		</div>
