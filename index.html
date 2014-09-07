@@ -34,10 +34,7 @@
 //			alert("CREATE na");
 		}
 		function querySuccess(tx, results){
-			alert("Result" + results);
 			var htmlstring = "";
-			alert (htmlstring);
-			
 			var len = results.rows.length;
 			alert("LEN: " + len);
 			for (var i=0;i<len;i++) {
@@ -46,7 +43,6 @@
 				htmlstring += results.rows.item(i).naam + "<li/>";
 			}
 			
-			alert("combineer");
 			$('#ul2').html(htmlstring);
 			alert("UL2");
 			$('#ul2').listview('refresh');
@@ -83,8 +79,7 @@
 			return false;
 		}
 		function InsertDB(tx){
-			alert("INSERT voor");
-		var animal = document.getElementById("animal").value;
+			var animal = document.getElementById("animal").value;
 			var aname = document.getElementById("aname").value;
 			var aimage = document.getElementById("aimage").value;
 			var adescr = document.getElementById("adescr").value;
@@ -94,7 +89,6 @@
 			tx.executeSql('INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ("Koe","Berta","","")');
 //			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
 
-			alert("INSERT na");
 			alert("Query done!!");
 			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
 			alert("RENDERLIST na");
@@ -167,7 +161,7 @@
 			
 			</div>
 			
-			<ul id="ul2">
+			<ul id="ul2" data-role="listview">
 			
 			</ul>
 		</div>
