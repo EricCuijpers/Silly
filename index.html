@@ -27,9 +27,9 @@
 //			alert("CREATE na");
 		}
 		function querySuccess(tx, results){
-			var htmlstring = "";
+			var htmlstring = "<br/>";
 			var len = results.rows.length;
-			alert("LEN: " + len);
+//			alert("LEN: " + len);
 			for (var i=0;i<len;i++) {
 //				alert(i);
 				htmlstring += "<li>"; 
@@ -58,7 +58,6 @@
 //			alert("RENDERLIST na");
 		}
 		function successDELDB(){ 
-			alert("DEL DONE!!");
 			$.mobile.changePage("#page4", {reverse: false, transmition: "slide"});
 			
 		}
@@ -73,7 +72,7 @@
 			$.mobile.changePage("#page3", {reverse: false, transmition: "slide"});
 			var omail = window.localStorage['username'];
 			$("#output").html("USERNAME " + window.localStorage['username'] + "<br/>"
-							+ "USERMAIL " + window.localStorage['usermail'] + "<br/>"
+					+ "USERMAIL " + window.localStorage['usermail'] + "<br/>"
 			);  
 			return false;
 		}
@@ -95,13 +94,17 @@
 			
 		};
 		
+		function ShowDB(){
+			alert("SHOW voor")
+			db.transaction(successQueryDB, errorDB);
+			alert("SHOW na");
+			
+		}
+		
 		function DeleteDB(){
-			alert("DEL");
 			db.transaction(function(tx) {
 			        tx.executeSql('DELETE FROM DEMO', [], successDELDB, errorDB); 
 			});
-
-			alert("DEL na");
 			return;
 		}
 		
@@ -118,16 +121,15 @@
 				$.mobile.changePage("#page4", {reverse: false, transmition: "slide"});
 			});
 			$('#but2clear').click(function() {
-				alert("BUR2Clear");
 				DeleteDB();
-
-			alert("DEL na");
-				alert("RELOAD");
 				window.location.href=window.location.href;
 			});
-			
-			
-			
+			$('#butShow').click(function() {
+				alert("BUTSHOW");
+				DeleteDB();
+				window.location.href=window.location.href;
+			});
+		
 		});
 		
 	</script>	
@@ -167,7 +169,7 @@
 		</div>
 	</div>	
   
-  <div data-role="page" id="page4">
+  	<div data-role="page" id="page4">
 		<div data-role="header" data-add-back-btn="true">
 			<h1>FORMULIER 2</h1>
 		</div>
@@ -180,7 +182,7 @@
 				<textarea id="adescr" 	name="adescr"  placeholder="Omschrijving"></textarea>
 				<button id="but2">Add</button>
 			</form>
-		
+			<button id="butShow">Show Current Content</button>
 		</div>
 	</div>
 	<div data-role="page" id="page5" >
