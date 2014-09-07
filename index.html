@@ -99,8 +99,8 @@
 			alert("DEL");
 			db.transaction(function(tx) {
 			        tx.executeSql('DELETE FROM DEMO', [], successDELDB, errorDB); 
-			    });
-			}
+			});
+
 			alert("DEL na");
 			return;
 		}
