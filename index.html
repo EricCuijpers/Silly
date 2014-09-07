@@ -93,6 +93,12 @@
 			
 			
 		};
+		function DeleteDB(tx){
+			alert("DEL");
+			tx.executeSql('DELETE * FROM DEMO');
+			alert("DEL na");
+			return true;
+		}
 		
 		function submitForm2() {
 			db.transaction(InsertDB, errorDB);
@@ -108,9 +114,9 @@
 			});
 			$('#but2clear').click(function() {
 				alert("BUR2Clear");
-				tx.executeSql('DELETE * FROM DEMO', [], querySuccess, errorDB);
+				db.transaction(DeleteDB, errorDB);
 				alert("RELOAD");
-				location.reload();
+				window.location.href=window.location.href;
 			});
 			
 			
