@@ -9,14 +9,7 @@
 	<script src="./js/silly.js"></script>
 	
 <script type="text/javascript">
-		$(document).ready(function() {
-			$('#locstor').click(function() {
-				$.mobile.changePage("#page2", {reverse: false, transmition: "slide"});
-			});
-			$('#dbstor').click(function() {
-				$.mobile.changePage("#page4", {reverse: false, transmition: "slide"});
-			});
-		});
+		
 		 
 		document.addEventListener("deviceready", onDeviceReady, false);
 		
@@ -101,6 +94,22 @@
 			db.transaction(InsertDB, errorDB);
 			return false;
 		}
+		
+		$(document).ready(function() {
+			$('#locstor').click(function() {
+				$.mobile.changePage("#page2", {reverse: false, transmition: "slide"});
+			});
+			$('#dbstor').click(function() {
+				$.mobile.changePage("#page4", {reverse: false, transmition: "slide"});
+			});
+			$('#but2clear').click(function() {
+				tx.executeSql('DELETE * FROM DEMO', [], querySuccess, errorDB);
+			});
+			
+			
+			
+		});
+		
 	</script>	
 	
 </head>
@@ -143,6 +152,7 @@
 			<h1>FORMULIER 2</h1>
 		</div>
 		<div data-role="content">
+			<button id="but2clear">Verwijder alles</button>
 			<form method="POST" onsubmit="return submitForm2()" data-ajax="false">
 				<input id="animal" 	name="animal" type=text placeholder="Animal"/>
 				<input id="aname" 	name="aname" type=text placeholder="Name"/>
