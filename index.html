@@ -44,8 +44,9 @@
 			}
 			
 			$('#ul2').html(htmlstring);
-			alert("UL2");
-			$('#ul2').listview('refresh');
+			var xx = 	$('#ul2').html;
+			alert(xx);
+			$('#ul2').listview().trigger("create");
 			
 			alert("UL2 refresh");
 			$.mobile.changePage("#page5", {reverse: false, transmition: "slide"});
