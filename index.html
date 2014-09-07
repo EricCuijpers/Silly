@@ -103,6 +103,7 @@
 				$.mobile.changePage("#page4", {reverse: false, transmition: "slide"});
 			});
 			$('#but2clear').click(function() {
+				alert("BUR2Clear");
 				tx.executeSql('DELETE * FROM DEMO', [], querySuccess, errorDB);
 			});
 			
@@ -152,7 +153,7 @@
 			<h1>FORMULIER 2</h1>
 		</div>
 		<div data-role="content">
-			<button id="but2clear">Verwijder alles</button>
+			
 			<form method="POST" onsubmit="return submitForm2()" data-ajax="false">
 				<input id="animal" 	name="animal" type=text placeholder="Animal"/>
 				<input id="aname" 	name="aname" type=text placeholder="Name"/>
@@ -168,6 +169,7 @@
 			<h1>Result Database storage</h1>
 		</div>
 		<div data-role="content">
+			<button id="but2clear">Verwijder alles</button>
 			<div id="output2">
 			
 			</div>
