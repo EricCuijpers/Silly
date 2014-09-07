@@ -29,7 +29,7 @@
 		function querySuccess(tx, results){
 			var htmlstring = "<br/>";
 			var len = results.rows.length;
-			alert("LEN: " + len);
+//			alert("LEN: " + len);
 			for (var i=0;i<len;i++) {
 //				alert(i);
 				htmlstring += "<li>"; 
@@ -53,7 +53,7 @@
 //			alert("DONE!!");
 		}
 		function successQueryDB(tx){ 
-			alert("Query done!!");
+//			alert("Query done!!");
 			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
 //			alert("RENDERLIST na");
 		}
@@ -83,7 +83,7 @@
 			var adescr = document.getElementById("adescr").value;
 			
 			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ('"+animal+"','"+aname+"','"+aimage+"','"+adescr+"')";
-			alert (sql);
+//			alert (sql);
 			tx.executeSql(sql);
 //			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
 
@@ -126,10 +126,24 @@
 				alert("BUTSHOW");
 				ShowDB();
 				window.location.href=window.location.href;
+
+			$('.GoTo1').click(function() {
+				$.mobile.changePage("#page1", {reverse: false, transmition: "slide"});
 			});
+			$('#GoTo2').click(function() {
+				$.mobile.changePage("#page2", {reverse: false, transmition: "slide"});
+			});
+			$('#GoTo4').click(function() {
+				$.mobile.changePage("#page4", {reverse: false, transmition: "slide"});
+			});			});
+
 		
 		});
-		
+
+		function exitFromApp()
+	             {
+	                navigator.app.exitApp();
+	             }		
 	</script>	
 	
 </head>
@@ -140,6 +154,9 @@
 
 		<button id="dbstor">database Storage Voorbeeld</button>
 
+
+
+		<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>
 		
 	</div>
 
@@ -153,7 +170,8 @@
 				<input id="usermail" name="email" type=text placeholder="Email"/>
 				<button id="but1">Add</button>
 			</form>
-		
+			<button style="position:absolute;bottom:30px;" class="GoTo1" 	>HOME</button>
+			<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>		
 		</div>
 	</div>
 	<div data-role="page" id="page3" >
@@ -164,6 +182,9 @@
 			<div id="output">
 			
 			</div>
+			<button style="position:absolute;bottom:30px;" class="GoTo1" 	>HOME</button>
+			<button style="position:absolute;bottom:20px;" id="GoTo2"  		>INSERT</button>
+			<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>	
 		</div>
 	</div>	
   
@@ -176,11 +197,13 @@
 			<form method="POST" onsubmit="return submitForm2()" data-ajax="false">
 				<input id="animal" 	name="animal" type=text placeholder="Animal"/>
 				<input id="aname" 	name="aname" type=text placeholder="Name"/>
-				<input id="aimage" 	name="aimage" type=text placeholder="Image"/>
+				<input id="aimage"  disabled	name="aimage" type=text placeholder="Image"/>
 				<textarea id="adescr" 	name="adescr"  placeholder="Omschrijving"></textarea>
 				<button id="but2">Add</button>
 			</form>
 			<button id="butShow">Show Current Content</button>
+			<button style="position:absolute;bottom:30px;" class="GoTo1" 	>HOME</button>
+			<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>
 		</div>
 	</div>
 	<div data-role="page" id="page5" >
@@ -196,6 +219,9 @@
 			<ul id="ul2" data-role="listview">
 			
 			</ul>
+			<button style="position:absolute;bottom:30px;" class="GoTo1" 	>HOME</button>
+			<button style="position:absolute;bottom:20px;" id="GoTo4"  	>INSERT</button>
+			<button style="position:absolute;bottom:10px;" name="buttonClick" onclick="exitFromApp()">EXIT!</button>
 		</div>
 	</div>	
   
