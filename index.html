@@ -41,11 +41,7 @@
 			}
 			
 			$('#ul2').html(htmlstring);
-			var xx = 	$('#ul2').html;
-			alert(xx);
 			$('#ul2').listview().trigger("create");
-			
-			alert("UL2 refresh");
 			$.mobile.changePage("#page5", {reverse: false, transmition: "slide"});
 			
 		}
@@ -87,9 +83,9 @@
 			var aimage = document.getElementById("aimage").value;
 			var adescr = document.getElementById("adescr").value;
 			
-			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ('Koe','Berta','','')";
+			var sql = "INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ('"+animal+"','"+aname+"','"+aimage+"','"+adescr+"')";
 			alert (sql);
-			tx.executeSql('INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ("Koe","Berta","","")');
+			tx.executeSql(sql);
 //			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
 
 //			alert("Query done!!");
