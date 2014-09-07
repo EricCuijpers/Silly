@@ -32,8 +32,12 @@
 			alert("LEN: " + len);
 			for (var i=0;i<len;i++) {
 //				alert(i);
-				htmlstring += "<li>" + results.rows.item(i).soort + " : ";
-				htmlstring += results.rows.item(i).naam + "<li/>";
+				htmlstring += "<li>"; 
+				htmlstring += results.rows.item(i).soort + " : ";
+				htmlstring += results.rows.item(i).name + " ";
+				htmlstring += results.rows.item(i).image + " ";
+				htmlstring += results.rows.item(i).omschrijving + " ";
+				htmlstring += "</li>"; 
 			}
 			
 			$('#ul2').html(htmlstring);
@@ -50,12 +54,12 @@
 		}
 		
 		function successDB(){ 
-			alert("DONE!!");
+//			alert("DONE!!");
 		}
 		function successQueryDB(tx){ 
-			alert("Query done!!");
+//			alert("Query done!!");
 			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
-			alert("RENDERLIST na");
+//			alert("RENDERLIST na");
 		}
 		
 		function submitForm() {
@@ -83,9 +87,9 @@
 			tx.executeSql('INSERT INTO DEMO (soort, name, image, omschrijving) VALUES ("Koe","Berta","","")');
 //			tx.executeSql(sql, [animal, aname, aimage, adescr], succesQueryDB, erroDB);
 
-			alert("Query done!!");
+//			alert("Query done!!");
 			tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorDB);
-			alert("RENDERLIST na");
+//			alert("RENDERLIST na");
 			
 			
 		};
@@ -105,6 +109,8 @@
 			$('#but2clear').click(function() {
 				alert("BUR2Clear");
 				tx.executeSql('DELETE * FROM DEMO', [], querySuccess, errorDB);
+				alert("RELOAD");
+				location.reload();
 			});
 			
 			
